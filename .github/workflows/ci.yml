@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [main, stg]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: staging
+        type: choice
+        options: [staging, production]
+
+jobs:
+  ci:
+    uses: mohamedmagdy122/reusable-frontend-ci/.github/workflows/reusable-frontend-ci.yml@main
+    with:
+      node-version: '22'
+      run-tests: true
+      image-name: ecommerce-frontend
+      environment: ${{ github.event.inputs.environment || 'staging' }}
+    secrets: inherit
