@@ -7,7 +7,7 @@ on:
     inputs:
       environment:
         description: 'Environment to deploy to'
-        required: true
+        required: false
         default: staging
         type: choice
         options: [staging, production]
@@ -19,5 +19,4 @@ jobs:
       node-version: '22'
       run-tests: true
       image-name: ecommerce-frontend
-      environment: ${{ github.event.inputs.environment || 'staging' }}
     secrets: inherit
