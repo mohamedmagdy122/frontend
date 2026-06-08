@@ -22,5 +22,5 @@ jobs:
     with:
       node-version: '22'
       run-tests: true
-      image-name: ecommerce-frontend
+      image-name: ecommerce-ui
     secrets: inherit
